@@ -1,0 +1,98 @@
+<% include ../partials/header %>
+
+<div class="ui main container" >
+    <div class="ui grid">
+        <div class="three wide column"></div>
+        <div class="ui text segment sixteen wide tablet ten wide computer column">
+            <div class="ui huge header">
+                <h2><%= blog.title %></h2>
+            </div>
+            <div class="ui top attached">
+                <div class="item">
+                    <span>Author: <%= blog.author.username %></span>
+                    <img src="<%= blog.image %>" class="ui centered rounded image">
+                    <span><%= blog.created.toDateString() %></span>
+                    <div class="description">
+                        <p><%- blog.body %></p>
+                    </div>
+                    <% if (currentUser && blog.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                        <a class="ui orange basic button" href="/blog/<%= blog._id %>/edit">Edit</a>
+                        <form id="delete-button" action="/blog/<%= blog._id %>?_method=DELETE" method="POST">
+                            <input type="submit" class="ui red basic button" value="Delete Post">
+                        </form>
+                    <% }; %>
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">Comments</h3>
+                        <% blog.comments.forEach(function(comment, numberOfComment) { %>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="<%= comment.author.avatar %>">
+                                </a>
+                                <div class="content">
+                                    <a class="author"><%= comment.author.username %></a>
+                                    <div class="metadata">
+                                        <span class="date">Today at 5:42PM</span>
+                                    </div>
+                                    <div class="text">
+                                        <%= comment.text %>
+                                    </div>
+                                    <div class="actions">
+                                        <div class='buttons'><a class="show reply">Reply</a><button class="hide ui red basic button close">X</button></div>
+                                            <form class="ui form form_comment" action="/blog/<%= blog._id %>/comments/<%= comment._id %>/reply" method='POST'>
+                                                <div class="field">
+                                                    <label for="reply">Enter your reply here:</label>
+                                                    <textarea class="textarea_comment" name="reply" id="reply_<%= numberOfComment %>" required></textarea>
+                                                </div>
+                                            <button class="ui green basic button" type="submit">Add reply!</button>
+                                        </form>
+                                    </div>
+                                    <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                                        <div class="actions">
+                                            <a class="ui orange mini basic button" href="/blog/<%= blog._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                                        </div>
+                                        <form id="delete-button" action="/blog/<%= blog._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                            <input type="submit" class="ui red mini basic button" value="Delete Comment">
+                                        </form>
+                                    <% }; %>
+                                    <% comment.reply.forEach(function (reply, numberOfReply) { %>
+                                        <div class="comments">
+                                            <div class="comment">
+                                                <a class="avatar">
+                                                    <img src="<%= reply.author.avatar %>">
+                                                </a>
+                                                <div class="content">
+                                                    <a class="author"><%= reply.author.username %></a>
+                                                    <div class="text">
+                                                        <%= reply.text %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                    <div class="buttons"><button class="show ui green basic button">Add comment?</button><button class="hide ui red basic button close">X</button></div>
+                    <form class="ui form form_comment" action="/blog/<%= blog._id %>/comments" method='POST'>
+                        <div class="field">
+                            <label for="comment">Enter your comment here:</label>
+                            <textarea class="textarea_comment" name="comment[text]" id="comment" required></textarea>
+                        </div>
+                        <button class="ui green basic button" type="submit">Add new comment!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <div class="ui right vertical menu three wide column computer only">
+                <div class="item"><p>Other Blogs:</p></div>
+                    <% randomBlogs.forEach(function (blog) { %>
+                        <a class="item" href="/blog/<%= blog._id %>"><%= blog.title.substring(0, 20) %>...</a>
+                    <% }) %>
+            </div>
+    </div>
+</div>
+
+<script src="/scripts/main.js" type="text/javascript"></script>
+
+<% include ../partials/footer %>

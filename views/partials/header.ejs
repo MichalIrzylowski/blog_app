@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog App</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css" type="text/css" rel="stylesheet">
+        <link href="/stylesheets/style.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="ui fixed inverted menu">
+                <div class="ui container">
+                    <div class="header item computer only">
+                        <i class="code icon"></i>Blog MI
+                    </div>
+                    <a href="/" class="item">Home</a>
+                    
+                    <% if (currentUser && currentUser.isAdmin) { %>
+                        <a href="/blog/new" class="item">New Blog</a>
+                        <a href="/allUsers" class="item">All users</a>
+                    <% } %>
+                    
+                    <div class="right menu">
+                        <% if(!currentUser) { %>
+                            <a href="/login" class="item">Sign in</a>
+                            <a href="/register" class="item">Sign up</a>
+                        <% } else { %>
+                            <a href="/user/<%= currentUser._id %>" class="item">Hello <%= currentUser.username %>!</a>
+                            <a href="/logout" class="item">Logout</a>
+                        <% }; %>
+                    </div>
+                </div>
+        </nav>
+        
+        <div class="ui container flash-message">
+            <% if (error && error.length > 0) { %>
+                <div class="ui error message">
+                    <div class="header">
+                        <%= error %>
+                    </div>
+                </div>
+            <% } %>
+            <% if (success && success.length > 0) { %>
+                <div class="ui success message">
+                    <div class="header">
+                        <%= success %>
+                    </div>
+                </div>
+            <% } %>
+            <% if (info && info.length > 0) { %>
+                <div class="ui info message">
+                    <div class="header">
+                        <%= info %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        
+        <!--<% if (currentUser && currentUser.isAdmin) { %>
+            <h1>You are an Admin!</h1>
+        <% } %>-->
+        

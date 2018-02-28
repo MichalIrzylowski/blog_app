@@ -1,0 +1,43 @@
+
+.code.icon {
+    font-size: 20px;
+}
+
+.container.main{
+    margin-top: 4em;
+}
+
+.ui.segment {
+    margin-bottom: 0;
+}
+
+.ui.form_comment {
+    display: none;
+}
+
+.hide.ui {
+    display: none;
+}
+
+.avatar {
+    height: 2.5em!important;
+}
+
+.flash-message {
+    margin-top: 60px;
+}
+
+#delete-button {
+    display: inline-block;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+    .header.item.computer.only {
+        display: none;
+    }
+}

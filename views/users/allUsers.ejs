@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+
+<form class="ui form" action="/make_new_admins?_method=PUT" method="POST">
+    <table class="ui celled padded table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Admin?</th>
+                <th>Change Admin Status?</th>
+                <th>e-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(function (user) { %>
+                <tr>
+                    <td class="single line"><%= user._id %></td>
+                    <td class="single line"><%= user.username %></td>
+                    <td class="single line"><%= user.firstName %></td>
+                    <td class="single line"><%= user.lastName %></td>
+                    <td class="single line"><%= user.isAdmin %></td>
+                    <td class="single line"><input type="text" name="<%= user._id %>" placeholder="true/false"></td>
+                    <td class="single line"><%= user.email %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <input class="ui green big basic button" type="submit" value="Make new admins!">
+</form>
+
+<% include ../partials/footer %>
