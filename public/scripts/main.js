@@ -1,4 +1,4 @@
-var show = document.getElementsByClassName('show'),
+const show = document.getElementsByClassName('show'),
     hide = document.getElementsByClassName('hide'),
     form = document.getElementsByClassName('form_comment');
 
@@ -14,3 +14,15 @@ for (let i = 0; i < show.length; i++) {
         hide[i].style = ('display: none');
     });
 }
+
+
+const hamburger_button = document.getElementById('hamburger-button'),
+        hamburger=document.getElementsByClassName('hamburger'),
+        menu = document.querySelector('nav ul');
+
+hamburger_button.addEventListener('click', function () {
+    for (let i = 0; i < hamburger.length; i++) {
+        hamburger[i].classList.toggle('clicked');
+    }
+    menu.classList.toggle('clicked');
+})

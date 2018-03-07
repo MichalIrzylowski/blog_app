@@ -103,15 +103,85 @@ nav h2 {
     font-family: "Quicksand", sans-serif
 }
 
+.logo_and_hamburger {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
 
+#hamburger-button {
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    margin-bottom: 0;
+    background: none;
+    display: none;
+}
+
+.hamburger {
+    display: block;
+    width: 30px;
+    height:3px;
+    background-color: #D01919;
+    border-radius: 1px;
+    margin: 5px 0;
+    position: relative;
+    transition: .1s ease;
+}
+
+.clicked.hamburger:nth-child(1) {
+    transform: rotate(45deg);
+    top: 4px;
+}
+
+.clicked.hamburger:nth-child(2) {
+    display: none;
+}
+
+.clicked.hamburger:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 4px;
+}
 
 nav ul li a {
     padding: 15px 15px;
 }
-
+/*
+@media (max-width:1100px) {
+    nav {
+        flex-direction: column;
+    }
+    
+    nav h2 {
+        font-size: 48px;
+    }
+    
+    nav ul li a {
+        font-size: 48px;
+    }
+}
+*/
 @media (max-width: 800px) {
     nav {
         flex-direction: column;
+    }
+    
+    #hamburger-button {
+        display: block;
+    }
+    
+    nav .logo_and_hamburger {
+        width: 100%;
+    }
+    
+    nav ul {
+        display: none;
+    }
+    
+    nav ul.clicked {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
     }
 
     nav h2 {
