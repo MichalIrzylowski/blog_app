@@ -1,0 +1,354 @@
+/* GENERAL STYLES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: normal 16px sans-serif;
+    color: #555;
+    scroll-behavior: smooth;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    opacity: .75;
+    color: #fff;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section:not(.hero):nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+section .title {
+    text-transform: capitalize;
+    font: bold 32px "Open Sans", sans-serif;
+    margin: 30px 0;
+}
+
+section p {
+    max-width: 775px;
+    line-height: 2;
+    padding: 0px 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+button {
+    color: #fff;
+    border: none;
+    width: 200px;
+    border-radius: 4px;
+    padding: 20px 46px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    background-color: #D01919;
+    font-size: 16px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+hr {
+    border: 0;
+    margin-bottom: 50px;
+    width: 500px;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(207, 25, 25, 0), rgba(207, 25, 25, 0.75), rgba(207, 25, 25, 0));
+}
+
+@media (max-width: 800px) {
+    button {
+        padding: 15px 40px;
+    }
+}
+
+/* NAV STYLES*/
+
+nav {
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #fff;
+    margin-top: 50px;
+    opacity: 0;
+    animation: slideup 1s forwards;
+}
+
+nav h2 {
+    font-family: "Quicksand", sans-serif
+}
+
+
+
+nav ul li a {
+    padding: 15px 15px;
+}
+
+@media (max-width: 800px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav h2 {
+        margin-bottom: 15px;
+    }
+}
+
+/*HERO STYLES*/
+
+.hero {
+    background-image: url(https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-0.3.5&s=d657c81ed595365ecbf5c8baa498ed4a&auto=format&fit=crop&w=1500&q=80);
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+}
+
+.hero header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(000, 000, 000, .3);
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 50px;
+    opacity: 0;
+    animation: slideup 1s .4s forwards;
+}
+
+.hero h1 {
+    font: bold 72px "Open Sans", sans-serif;
+    padding: 15px 0px 10px 0px;
+}
+
+.hero p {
+    font: normal 36px "Open Sans", sans-serif;
+    padding: 10px 15px;
+}
+
+@keyframes slideup {
+    0% {
+        margin-top: 50px;
+        opacity: 0
+    }
+    100% {
+        margin-top: 0px;
+        opacity: 1
+    }
+}
+
+@media (max-width: 800px) {
+    .hero {
+        min-height: 600px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 24px;
+    }
+}
+
+/* ABILITIES STYLES*/
+
+.grid {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.abilities .grid li:nth-child(1) {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png);
+}
+
+.abilities .grid li:nth-child(2) {
+    background-image: url(https://nodejs.org/static/images/logos/nodejs-new-pantone-black.png);
+}
+
+.abilities .grid li:nth-child(3) {
+    background-image: url(http://www.bobbyberberyan.com/wp-content/uploads/2012/03/HTML5CSS3Logos.svg);
+}
+
+.abilities .grid li:nth-child(4) {
+    background-image: url(http://www.unixstickers.com/image/cache/data/stickers/bootstrap/bootstrap.sh-600x600.png);
+}
+
+.abilities .grid li {
+    height: 350px;
+    padding: 20px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.abilities .grid .small {
+    flex-basis: 30%;
+}
+
+.abilities .grid .large {
+    flex-basis: 70%;
+}
+
+.abilities_image {
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 80%;
+}
+
+@media (max-width: 1100px) {
+    .abilities .grid .small,
+    .abilities .grid .large {
+        flex-basis: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    .abilities .grid .small,
+    .abilities .grid .large {
+        flex-basis: 100%;
+    }
+}
+
+/*PROJECTS SECTION*/
+
+.projects .grid li {
+    padding: 50px;
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.projects .grid li h4 {
+    font-size: 30px;
+    margin: 25px 0;
+}
+
+.project_image {
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .projects .grid li {
+        flex-basis: 100%;
+        padding: 20px;
+    }
+}
+
+/*CONTACT*/
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-bottom: 50px;
+}
+
+.contact label {
+    font-size: 24px;
+}
+
+.contact form input {
+    height: 50px;
+    margin: 10px 0;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.contact form textarea {
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 20px 0;
+}
+
+.contact form button {
+    align-self: center;
+}
+
+@media (max-width: 800px) {
+    .contact form {
+        width: 90%;
+    }
+
+    .contact label {
+        font-size: 18px;
+    }
+
+    .contact form input {
+        height: 40px;
+        font-size: 14px;
+    }
+}
+
+/*FOOTER SECTION*/
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #607d8b;
+    color: #fff;
+    padding: 20px 0;
+}
+
+footer ul {
+    display: flex;
+}
+
+footer ul li {
+    margin-left: 16px;
+}
+
+footer p {
+    font-size: 14px;
+    text-transform: uppercase;
+    opacity: .6;
+    align-self: center;
+}
+
+
+@media (max-width: 1100px) {
+    footer {
+        flex-direction: column;
+    }
+
+    footer p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    footer ul li {
+        margin: 0 8px;
+    }
+}

@@ -5,7 +5,7 @@ const   express = require("express"),
 
 //INDEX ROUTE
 router.get("/", function(req, res) {
-    res.redirect("/blog");
+    res.render("home");
 });
 
 router.get("/blog", function(req, res){
